@@ -33,10 +33,20 @@ attributed_visits AS (
 ),
 
 all_ads AS (
-    SELECT campaign_date, utm_source, utm_medium, utm_campaign, daily_spent
+    SELECT
+        campaign_date,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        daily_spent
     FROM vk_ads
     UNION ALL
-    SELECT campaign_date, utm_source, utm_medium, utm_campaign, daily_spent
+    SELECT
+        campaign_date,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        daily_spent
     FROM ya_ads
 ),
 
