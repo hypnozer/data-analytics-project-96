@@ -29,7 +29,7 @@ attributed_visits AS (
     LEFT JOIN leads AS l
         ON s.visitor_id = l.visitor_id AND s.visit_date <= l.created_at
     WHERE s.visit_rank = 1
-    GROUP BY 1, 2, 3, 4
+    GROUP BY s.visit_date::DATE, s.source, s.medium, s.campaign
 ),
 
 all_ads AS (
@@ -58,7 +58,7 @@ advertising_costs AS (
         utm_campaign,
         SUM(daily_spent) AS total_cost
     FROM all_ads
-    GROUP BY 1, 2, 3, 4
+    GROUP BY campaign_date::DATE, utm_source, utm_medium, utm_campaign
 )
 
 SELECT
